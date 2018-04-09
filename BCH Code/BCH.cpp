@@ -2,7 +2,7 @@
 #include "Utilities.h"
 #include <iostream>
 
-#define BPE(x) (E >> (x))
+#define BPE(x) (E << (x))
 namespace Coding {
 
     BCH::BCH( size_t polynom_degree, size_t hamming_distance )

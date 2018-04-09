@@ -47,7 +47,7 @@ Polynom& Polynom::operator*=( const Polynom& rhp ) {
     trim();
     return *this;
 }
-Polynom& Polynom::operator>>=( size_t value ) {
+Polynom& Polynom::operator<<=( size_t value ) {
     coefficients_t new_coefficients( value, 0 );
     new_coefficients.insert( new_coefficients.end(), coefficients_.begin(), coefficients_.end() );
     coefficients_.swap( new_coefficients );
@@ -70,9 +70,9 @@ Polynom Polynom::operator*( const Polynom& rhp ) const {
     Polynom resPolynom( *this );
     return resPolynom *= rhp;
 }
-Polynom Polynom::operator>>( size_t value ) const {
+Polynom Polynom::operator<<( size_t value ) const {
     Polynom resPolynom( *this );
-    return resPolynom >>= value;
+    return resPolynom <<= value;
 }
 bool Polynom::isZero() const {
     return coefficients_.empty();
@@ -99,7 +99,7 @@ std::pair<Polynom, Polynom> Polynom::operator/( const Polynom& rhp ) const {
         size_t polynom_degree = dividend.coefficients_.size() - divisor.coefficients_.size();
 
         quotient.coefficients_[ polynom_degree ] = dividend.coefficients_.back();
-        dividend -= ( Polynom( { dividend.coefficients_.back() } ) >> polynom_degree ) * divisor;
+        dividend -= ( Polynom( { dividend.coefficients_.back() } ) << polynom_degree ) * divisor;
     }
     dividend.trim();
     quotient.trim();

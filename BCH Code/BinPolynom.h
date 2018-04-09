@@ -17,12 +17,12 @@ public:
     BinPolynom& operator+=( const BinPolynom& rhp );
     BinPolynom& operator-=( const BinPolynom& rhp );
     BinPolynom& operator*=( const BinPolynom& rhp );
-    BinPolynom& operator>>=( size_t value );
+    BinPolynom& operator<<=( size_t value );
 
     BinPolynom operator+( const BinPolynom& rhp ) const;
     BinPolynom operator-( const BinPolynom& rhp ) const;
     BinPolynom operator*( const BinPolynom& rhp ) const;
-    BinPolynom operator>>( size_t value ) const;
+    BinPolynom operator<<( size_t value ) const;
     BinPolynom operator%( const BinPolynom& rhp ) const;
     std::pair<BinPolynom, BinPolynom> operator/( const BinPolynom& rhp ) const;
 

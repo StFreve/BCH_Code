@@ -45,7 +45,7 @@ BinPolynom& BinPolynom::operator*=( const BinPolynom& rhp ) {
     trim();
     return *this;
 }
-BinPolynom& BinPolynom::operator>>=( size_t value ) {
+BinPolynom& BinPolynom::operator<<=( size_t value ) {
     coefficients_t new_coefficients( value, 0 );
     new_coefficients.insert( new_coefficients.end(), coefficients_.begin(), coefficients_.end() );
     coefficients_.swap( new_coefficients );
@@ -64,9 +64,9 @@ BinPolynom BinPolynom::operator*( const BinPolynom& rhp ) const {
     BinPolynom resBinPolynom( *this );
     return resBinPolynom *= rhp;
 }
-BinPolynom BinPolynom::operator>>( size_t value ) const {
+BinPolynom BinPolynom::operator<<( size_t value ) const {
     BinPolynom resBinPolynom( *this );
-    return resBinPolynom >>= value;
+    return resBinPolynom <<= value;
 }
 BinPolynom BinPolynom::operator%( const BinPolynom& rhp ) const {
     return operator/( rhp ).second;
@@ -90,7 +90,7 @@ std::pair<BinPolynom, BinPolynom> BinPolynom::operator/( const BinPolynom& rhp )
         size_t BinPolynom_degree = dividend.coefficients_.size() - divisor.coefficients_.size();
 
         quotient.coefficients_[ BinPolynom_degree ] = dividend.coefficients_.back();
-        dividend -= ( BinPolynom( { dividend.coefficients_.back() } ) >> BinPolynom_degree ) * divisor;
+        dividend -= ( BinPolynom( { dividend.coefficients_.back() } ) << BinPolynom_degree ) * divisor;
     }
     dividend.trim();
     quotient.trim();

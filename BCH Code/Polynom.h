@@ -15,13 +15,13 @@ public:
     Polynom& operator-=( const Polynom& rhp );
     Polynom& operator*=( coefficient_t value );
     Polynom& operator*=( const Polynom& rhp );
-    Polynom& operator>>=( size_t value );
+    Polynom& operator<<=( size_t value );
 
     Polynom operator+( const Polynom& rhp ) const;
     Polynom operator-( const Polynom& rhp ) const;
     Polynom operator*( coefficient_t value ) const;
     Polynom operator*( const Polynom& rhp ) const;
-    Polynom operator>>( size_t value ) const;
+    Polynom operator<<( size_t value ) const;
     Polynom operator%( const Polynom& rhp ) const;
     std::pair<Polynom, Polynom> operator/( const Polynom& rhp ) const;
 

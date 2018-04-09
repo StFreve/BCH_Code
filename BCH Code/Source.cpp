@@ -12,7 +12,7 @@ using namespace std;
 
 
 void main() {
-    Coding::BCH bch( 20, 7 );
+    Coding::BCH bch( 15, 7 );
 
     std::string plainText = "Hello, World!";
     std::cout << "Plain Text: " << plainText << std::endl;
