@@ -97,6 +97,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -113,12 +114,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BCH.cpp" />
     <ClCompile Include="BinPolynom.cpp" />
     <ClCompile Include="Polynom.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BCH.h" />
     <ClInclude Include="BinPolynom.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="Utilities.h" />
     <ClInclude Include="Polynom.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

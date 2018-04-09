@@ -1,15 +1,17 @@
 #pragma once
 #include <vector>
 #include <ostream>
+#include "Defines.h"
+namespace Coding {
 
 class BinPolynom {
-    typedef bool coefficient_t;
-    typedef std::vector<coefficient_t> coefficients_t;
+public:
+    typedef byte coefficient_t;
+    typedef bytes coefficients_t;
 
-    coefficients_t coefficients_;
 public:
     BinPolynom( const std::initializer_list<coefficient_t>& init_list );
-    BinPolynom( const std::vector<coefficient_t>& coefficients );
+    BinPolynom( const coefficients_t& coefficients );
     BinPolynom() = default;
 
     BinPolynom& operator+=( const BinPolynom& rhp );
@@ -29,8 +31,15 @@ public:
 
     friend std::ostream& operator<<( std::ostream& os, const BinPolynom& rhp );
 
+    coefficients_t get_coefficients() const;
+
     bool isZero() const;
     size_t degree() const;
+    bytes toBytes() const;
 private:
     void trim();
+private:
+    coefficients_t coefficients_;
 };
+
+}

@@ -24,12 +24,27 @@
     <ClCompile Include="BinPolynom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BCH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Polynom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BinPolynom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BCH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,10 +3,10 @@
 #include <ostream>
 
 class Polynom {
+public:
     typedef int coefficient_t;
     typedef std::vector<coefficient_t> coefficients_t;
 
-    coefficients_t coefficients_;
 public:
     Polynom( const std::initializer_list<coefficient_t>& init_list );
     Polynom( const std::vector<coefficient_t>& coefficients );
@@ -34,4 +34,7 @@ public:
     size_t degree() const;
 private:
     void trim();
+
+private:
+    coefficients_t coefficients_;
 };

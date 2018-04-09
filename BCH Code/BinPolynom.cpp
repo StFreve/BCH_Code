@@ -1,4 +1,5 @@
 #include "BinPolynom.h"
+namespace Coding {
 
 BinPolynom::BinPolynom( const std::initializer_list<coefficient_t>& init_list )
     : coefficients_( init_list ) {
@@ -8,7 +9,7 @@ BinPolynom::BinPolynom( const std::initializer_list<coefficient_t>& init_list )
     }
 }
 
-BinPolynom::BinPolynom( const std::vector<coefficient_t>& coefficients )
+BinPolynom::BinPolynom( const coefficients_t& coefficients )
     : coefficients_( coefficients ) {
     trim();
     if ( !coefficients_.empty() && coefficients_.back() > 1 ) {
@@ -108,6 +109,11 @@ bool BinPolynom::operator<( const BinPolynom& rhp ) const {
     return false;
 }
 
+BinPolynom::coefficients_t BinPolynom::get_coefficients() const
+{
+    return coefficients_;
+}
+
 bool BinPolynom::isZero() const {
     return coefficients_.empty();
 }
@@ -116,6 +122,11 @@ size_t BinPolynom::degree() const {
         return 0;
     }
     return coefficients_.size() - 1;
+}
+
+bytes BinPolynom::toBytes() const
+{
+    return coefficients_;
 }
 
 void BinPolynom::trim() {
@@ -134,7 +145,8 @@ std::ostream& operator<<( std::ostream& os, const BinPolynom& rhp ) {
     if ( rhp.coefficients_.empty() ) {
         os << 0;
     }
-    for ( size_t i = 0; i < rhp.coefficients_.size(); ++i ) {
+
+    for ( int i = rhp.coefficients_.size() - 1; i >= 0; --i ) {
         if ( rhp.coefficients_[ i ] != 0 ) {
             if ( isFirst == false ) {
                 os << " + ";
@@ -151,4 +163,6 @@ std::ostream& operator<<( std::ostream& os, const BinPolynom& rhp ) {
         }
     }
     return os;
+}
+
 }
