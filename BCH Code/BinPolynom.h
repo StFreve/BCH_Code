@@ -6,8 +6,8 @@ namespace Coding {
 
 class BinPolynom {
 public:
-    typedef byte coefficient_t;
-    typedef bytes coefficients_t;
+    typedef bool coefficient_t;
+    typedef std::vector<bool> coefficients_t;
 
 public:
     BinPolynom( const std::initializer_list<coefficient_t>& init_list );

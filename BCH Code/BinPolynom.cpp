@@ -8,14 +8,15 @@ BinPolynom::BinPolynom( const std::initializer_list<coefficient_t>& init_list )
         throw std::exception( "Coefficient of max degree must be 1" );
     }
 }
-
 BinPolynom::BinPolynom( const coefficients_t& coefficients )
-    : coefficients_( coefficients ) {
+    : coefficients_(coefficients)
+{
     trim();
     if ( !coefficients_.empty() && coefficients_.back() > 1 ) {
         throw std::exception( "Coefficient of max degree must be 1" );
     }
 }
+
 BinPolynom& BinPolynom::operator+=( const BinPolynom& rhp ) {
     if ( rhp.coefficients_.size() > coefficients_.size() ) {
         coefficients_.resize( rhp.coefficients_.size() );
@@ -30,6 +31,10 @@ BinPolynom& BinPolynom::operator-=( const BinPolynom& rhp ) {
     return operator+=( rhp );
 }
 BinPolynom& BinPolynom::operator*=( const BinPolynom& rhp ) {
+    if ( isZero() || rhp.isZero() ) {
+        coefficients_.clear();
+        return *this;
+    }
     coefficients_t new_coefficients( coefficients_.size() + rhp.coefficients_.size() - 1, 0 );
     for ( size_t i = 0; i < coefficients_.size(); ++i ) {
         for ( size_t j = 0; j < rhp.coefficients_.size(); ++j ) {
@@ -126,7 +131,11 @@ size_t BinPolynom::degree() const {
 
 bytes BinPolynom::toBytes() const
 {
-    return coefficients_;
+    bytes bytes_array( ( coefficients_.size() + 7 ) >> 3, 0 );
+    for ( size_t i = 0; i < coefficients_.size(); ++i ) {
+        bytes_array[ i >> 3 ] |= byte(coefficients_[ i ]) << (i & 7);
+    }
+    return bytes_array;
 }
 
 void BinPolynom::trim() {
