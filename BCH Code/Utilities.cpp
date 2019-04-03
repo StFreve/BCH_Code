@@ -71,7 +71,7 @@ bytes Utilities::concat_binary_polynoms( const std::vector<BinPolynom>& binary_p
     return result_bytes_array;
 }
 
-bytes Utilities::remove_zero_bytes_from_end(bytes& bytes_array )
+bytes& Utilities::remove_zero_bytes_from_end(bytes& bytes_array )
 {
     for ( int i = bytes_array.size() - 1; i >= 0; --i ) {
         if ( bytes_array[ i ] ) {
@@ -81,6 +81,19 @@ bytes Utilities::remove_zero_bytes_from_end(bytes& bytes_array )
     }
     bytes_array.clear();
     return bytes_array;
+}
+
+bytes Utilities::remove_zero_bytes_from_end(const bytes& bytes_array)
+{
+	bytes result_bytes_array = bytes_array;
+	for(int i = result_bytes_array.size() - 1; i >= 0; --i) {
+		if(result_bytes_array[ i ]) {
+			result_bytes_array.resize(i + 1);
+			return result_bytes_array;
+		}
+	}
+	result_bytes_array.clear();
+	return result_bytes_array;
 }
 
 std::vector<BinPolynom> Utilities::split_to_binary_polynoms( const bytes & bytes_array, size_t bits_per_polynom )

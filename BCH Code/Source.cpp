@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-void main() {
+int main() {
     Coding::BCH bch( 15, 7 );
 
     std::string plainText = "Hello, World!";

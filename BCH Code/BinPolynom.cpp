@@ -5,7 +5,7 @@ BinPolynom::BinPolynom( const std::initializer_list<coefficient_t>& init_list )
     : coefficients_( init_list ) {
     trim();
     if ( !coefficients_.empty() && coefficients_.back() > 1 ) {
-        throw std::exception( "Coefficient of max degree must be 1" );
+        throw std::runtime_error( "Coefficient of max degree must be 1" );
     }
 }
 BinPolynom::BinPolynom( const coefficients_t& coefficients )
@@ -13,7 +13,7 @@ BinPolynom::BinPolynom( const coefficients_t& coefficients )
 {
     trim();
     if ( !coefficients_.empty() && coefficients_.back() > 1 ) {
-        throw std::exception( "Coefficient of max degree must be 1" );
+        throw std::runtime_error( "Coefficient of max degree must be 1" );
     }
 }
 
@@ -73,7 +73,7 @@ BinPolynom BinPolynom::operator%( const BinPolynom& rhp ) const {
 }
 std::pair<BinPolynom, BinPolynom> BinPolynom::operator/( const BinPolynom& rhp ) const {
     if ( rhp.isZero() ) {
-        throw std::exception( "Divisor cannot be Zero!" );
+        throw std::runtime_error( "Divisor cannot be Zero!" );
     }
 
     if ( rhp.coefficients_.size() > coefficients_.size() ) {
