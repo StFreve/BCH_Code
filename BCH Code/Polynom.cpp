@@ -1,4 +1,5 @@
 #include "Polynom.h"
+#include <stdexcept>
 
 Polynom::Polynom( const std::initializer_list<coefficient_t>& init_list )
     : coefficients_( init_list ) {

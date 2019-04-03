@@ -1,4 +1,5 @@
 #include "BinPolynom.h"
+#include <stdexcept>
 namespace Coding {
 
 BinPolynom::BinPolynom( const std::initializer_list<coefficient_t>& init_list )
